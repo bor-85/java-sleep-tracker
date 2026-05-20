@@ -93,7 +93,7 @@ class SleepTrackerAppTest {
                 session("01.10.25 12:00", "01.10.25 13:30", "NORMAL")  // 90
         ));
 
-        assertEquals("Средняя продолжительность сессии (в минутах): 60,00", result.toString());
+        assertEquals("Средняя продолжительность сессии (в минутах): 60.00", result.toString());
     }
 
     @Test
@@ -102,7 +102,7 @@ class SleepTrackerAppTest {
                 session("01.10.25 08:00", "01.10.25 08:15", "NORMAL") // 15
         ));
 
-        assertEquals("Средняя продолжительность сессии (в минутах): 15,00", result.toString());
+        assertEquals("Средняя продолжительность сессии (в минутах): 15.00", result.toString());
     }
 
     //SleepSessionsBadQualityCount
