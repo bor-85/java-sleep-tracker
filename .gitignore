@@ -1,6 +1,7 @@
 out/
 target/
 src/main/resources/sleep_log.txt
+lib/
 
 ### IntelliJ IDEA ###
 .idea/
