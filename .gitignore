@@ -1,1 +1,9 @@
 out/
+target/
+src/main/resources/sleep_log.txt
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
