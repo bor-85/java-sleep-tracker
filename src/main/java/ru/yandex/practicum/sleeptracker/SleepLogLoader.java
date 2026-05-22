@@ -17,7 +17,7 @@ public class SleepLogLoader {
     }
 
     public List<String> getLog() throws IncomingLogReadException {
-        try(BufferedReader reader = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8)) {
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8)) {
             return reader.lines().collect(Collectors.toList());
         } catch (IOException e) {
             throw new IncomingLogReadException("Метод getLog - ошибка чтения лога сна: " + filename);
