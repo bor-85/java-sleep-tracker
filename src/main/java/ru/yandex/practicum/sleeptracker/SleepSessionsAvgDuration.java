@@ -3,9 +3,8 @@ package ru.yandex.practicum.sleeptracker;
 import java.time.Duration;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Function;
 
-public class SleepSessionsAvgDuration implements Function<List<SleepSession>,SleepAnalysisResult> {
+public class SleepSessionsAvgDuration implements SleepTrackerFunction {
 
     //Средняя продолжительность сна
     @Override

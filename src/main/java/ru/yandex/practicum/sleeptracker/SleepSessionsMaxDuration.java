@@ -2,9 +2,8 @@ package ru.yandex.practicum.sleeptracker;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.function.Function;
 
-public class SleepSessionsMaxDuration implements Function<List<SleepSession>,SleepAnalysisResult> {
+public class SleepSessionsMaxDuration implements SleepTrackerFunction {
 
     //Максимальная продолжительность сна
     @Override
@@ -13,6 +12,6 @@ public class SleepSessionsMaxDuration implements Function<List<SleepSession>,Sle
                 .mapToLong(sleepSession -> Duration.between(sleepSession.getDateBegin(), sleepSession.getDateEnd()).toMinutes())
                 .max()
                 .orElse(0);
-        return new SleepAnalysisResult("Максимальная продолжительность сессии (в минутах)", String.valueOf(maxDuration));
+        return new SleepAnalysisResult("Максимальная продолжительность сессии (в минутах)", maxDuration);
     }
 }

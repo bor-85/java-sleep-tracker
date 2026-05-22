@@ -5,10 +5,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
-public class SleepSessionSleeplessNights implements Function<List<SleepSession>, SleepAnalysisResult> {
+public class SleepSessionSleeplessNights implements SleepTrackerFunction {
 
     //Вычисление количества бессонных ночей
     @Override
@@ -20,7 +19,7 @@ public class SleepSessionSleeplessNights implements Function<List<SleepSession>,
 
         long totalNights = getTotalNights(sleepSessions);
 
-        return new SleepAnalysisResult("Количество ночей без сна", String.valueOf(totalNights - sleepNights));
+        return new SleepAnalysisResult("Количество ночей без сна", totalNights - sleepNights);
     }
 
     //вычисление, что ночь попадает в период с 00:00 по 06:00

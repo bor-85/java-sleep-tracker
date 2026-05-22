@@ -4,10 +4,13 @@ import java.time.LocalTime;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class SleepSessionsChronotype  implements Function<List<SleepSession>,SleepAnalysisResult> {
+public class SleepSessionsChronotype  implements SleepTrackerFunction {
+    private static final LocalTime OWL_SLEEP_TIME = LocalTime.of(23, 0);
+    private static final LocalTime OWL_WAKE_TIME = LocalTime.of(9, 0);
+    private static final LocalTime LARK_SLEEP_TIME = LocalTime.of(22, 0);
+    private static final LocalTime LARK_WAKE_TIME = LocalTime.of(7, 0);
 
     //Вычисление хронотипа
     @Override
@@ -23,11 +26,11 @@ public class SleepSessionsChronotype  implements Function<List<SleepSession>,Sle
                             LocalTime sleep = session.getDateBegin().toLocalTime();
                             LocalTime wake = session.getDateEnd().toLocalTime();
 
-                            if (sleep.isAfter(LocalTime.of(23, 0)) &&
-                                    wake.isAfter(LocalTime.of(9, 0))) {
+                            if (sleep.isAfter(OWL_SLEEP_TIME) &&
+                                    wake.isAfter(OWL_WAKE_TIME)) {
                                 return Chronotype.OWL;
-                            } else if (sleep.isBefore(LocalTime.of(22, 0)) &&
-                                    wake.isBefore(LocalTime.of(7, 0))) {
+                            } else if (sleep.isBefore(LARK_SLEEP_TIME) &&
+                                    wake.isBefore(LARK_WAKE_TIME)) {
                                 return Chronotype.LARK;
                             } else {
                                 return Chronotype.PIGEON;
@@ -50,6 +53,6 @@ public class SleepSessionsChronotype  implements Function<List<SleepSession>,Sle
             result = Chronotype.PIGEON;
         }
 
-        return new SleepAnalysisResult("Хронотип по логу", String.valueOf(result.getRuName()));
+        return new SleepAnalysisResult("Хронотип по логу", result.getRuName());
     }
 }

@@ -2,9 +2,8 @@ package ru.yandex.practicum.sleeptracker;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.function.Function;
 
-public class SleepSessionsMinDuration implements Function<List<SleepSession>,SleepAnalysisResult> {
+public class SleepSessionsMinDuration implements SleepTrackerFunction {
 
     //Минимальная продолжительность сна
     @Override
@@ -13,6 +12,6 @@ public class SleepSessionsMinDuration implements Function<List<SleepSession>,Sle
                 .mapToLong(sleepSession -> Duration.between(sleepSession.getDateBegin(), sleepSession.getDateEnd()).toMinutes())
                 .min()
                 .orElse(0);
-        return new SleepAnalysisResult("Минимальная продолжительность сессии (в минутах)", String.valueOf(minDuration));
+        return new SleepAnalysisResult("Минимальная продолжительность сессии (в минутах)", minDuration);
     }
 }
